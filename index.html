@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#0ea5e9">
+<title>Aditya Computer Academy</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:linear-gradient(135deg,#e0f7ff,#f5fbff,#dff6ff);
+color:#102a43;
+line-height:1.6
+}
+a{text-decoration:none;color:inherit}
+.container{width:92%;max-width:1200px;margin:auto}
+
+header{
+position:sticky;top:0;z-index:1000;
+background:rgba(255,255,255,.94);
+backdrop-filter:blur(12px);
+box-shadow:0 3px 20px #0002
+}
+.nav{
+min-height:75px;
+display:flex;
+align-items:center;
+justify-content:space-between
+}
+.logoBox{display:flex;align-items:center;gap:10px}
+.logoBox img{width:58px;height:58px;object-fit:contain}
+.logoText{font-weight:bold;color:#082b55;font-size:17px}
+.logoText small{
+display:block;color:#0784c9;
+font-size:10px;letter-spacing:2px
+}
+nav{display:flex;gap:5px;flex-wrap:wrap}
+nav a{
+padding:9px 11px;border-radius:10px;
+font-size:14px;font-weight:bold
+}
+nav a:hover{background:#dff5ff;color:#0075b5}
+.menu{display:none;font-size:25px;border:0;background:#e0f7ff;padding:7px;border-radius:8px}
+
+.hero{
+min-height:650px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+background:
+linear-gradient(120deg,#0284cddd,#082b55dd),
+url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1800&q=85")
+center/cover fixed
+}
+.hero img{
+width:150px;height:150px;background:white;
+padding:8px;border-radius:50%
+}
+.hero h1{
+font-size:clamp(38px,7vw,75px);
+margin:20px 0 10px;
+letter-spacing:2px
+}
+.hero p{font-size:19px;margin:8px}
+.buttons{
+display:flex;justify-content:center;
+gap:12px;flex-wrap:wrap;margin-top:25px
+}
+.btn{
+display:inline-block;
+padding:12px 19px;
+border:0;border-radius:12px;
+font-weight:bold;cursor:pointer;
+transition:.2s
+}
+.btn:hover{transform:translateY(-2px)}
+.blue{background:#0284c7;color:#fff}
+.green{background:#16a34a;color:white}
+.dark{background:#082b55;color:white}
+.orange{background:#f59e0b;color:white}
+.white{background:white;color:#05699e}
+
+section{padding:70px 0}
+.title{text-align:center;margin-bottom:35px}
+.title span{
+color:#0284c7;font-size:13px;
+font-weight:bold;letter-spacing:2px
+}
+.title h2{font-size:38px;color:#082b55;margin:5px}
+.title p{color:#64748b}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px
+}
+.card{
+background:#fff;
+border:1px solid #c9edff;
+border-radius:20px;
+padding:23px;
+box-shadow:0 12px 35px #0284c718
+}
+.card h3{color:#075985;margin:8px 0}
+.icon{font-size:32px}
+.muted{color:#64748b}
+
+.course{
+display:flex;
+flex-direction:column
+}
+.course .price{
+font-size:22px;
+font-weight:bold;
+color:#0284c7
+}
+.subjects{
+display:none;
+background:#effaff;
+border-radius:12px;
+padding:13px;
+margin-top:12px
+}
+.course.show .subjects{display:block}
+.subjects li{margin-left:20px}
+.courseButtons{
+margin-top:auto;
+padding-top:15px;
+display:flex;
+gap:8px;
+flex-wrap:wrap
+}
+
+.thought{
+background:linear-gradient(120deg,#075985,#0ea5e9);
+color:white;
+padding:30px;
+border-radius:22px;
+text-align:center;
+font-size:23px;
+font-weight:bold;
+box-shadow:0 15px 40px #0284c733
+}
+
+.slider{overflow:hidden}
+.slideTrack{
+display:flex;
+gap:18px;
+width:max-content;
+animation:slide 35s linear infinite
+}
+.slideTrack img{
+width:280px;height:190px;
+object-fit:cover;
+border-radius:18px
+}
+@keyframes slide{
+from{transform:translateX(0)}
+to{transform:translateX(-50%)}
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;margin-top:20px
+}
+.gallery img{
+width:100%;height:190px;
+object-fit:cover;border-radius:16px
+}
+
+.form{display:grid;gap:14px}
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px
+}
+label{font-weight:bold;font-size:14px}
+input,textarea,select{
+width:100%;
+padding:12px;
+border:1px solid #cbd5e1;
+border-radius:11px;
+margin-top:5px;
+outline:none
+}
+textarea{min-height:90px}
+input:focus,textarea:focus,select:focus{
+border-color:#0ea5e9;
+box-shadow:0 0 0 3px #e0f2fe
+}
+
+.watermark{
+position:relative;
+overflow:hidden
+}
+.watermark:before{
+content:"ADITYA COMPUTER ACADEMY";
+position:absolute;
+font-size:45px;
+font-weight:bold;
+color:#0284c7;
+opacity:.05;
+transform:rotate(-25deg);
+top:45%;
+left:5%;
+pointer-events:none
+}
+
+.notice{
+padding:15px;
+background:#ecfdf5;
+border:1px solid #86efac;
+border-radius:12px;
+margin-top:15px
+}
+
+.ai{
+position:relative;
+overflow:hidden
+}
+.ai a{
+color:#0284c7;
+font-weight:bold
+}
+
+.review{
+border-left:5px solid #0ea5e9
+}
+.stars{color:#f59e0b;font-size:20px}
+
+.admin{
+display:none
+}
+.admin.open{display:block}
+
+.tableBox{overflow:auto}
+table{
+width:100%;
+border-collapse:collapse;
+min-width:700px
+}
+th,td{
+padding:10px;
+border-bottom:1px solid #ddd;
+text-align:left
+}
+th{background:#e0f7ff}
+
+footer{
+background:#071c34;
+color:#dbeafe;
+padding:50px 0 20px
+}
+.footerGrid{
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+gap:30px
+}
+footer h3{color:white;margin-bottom:10px}
+.copyright{
+border-top:1px solid #24415e;
+margin-top:30px;
+padding-top:15px;
+text-align:center;
+color:#94a3b8
+}
+
+.floating{
+position:fixed;
+right:18px;
+bottom:18px;
+z-index:2000;
+display:flex;
+flex-direction:column;
+gap:8px
+}
+.floating a{
+width:50px;height:50px;
+border-radius:50%;
+display:grid;
+place-items:center;
+color:white;font-size:22px;
+box-shadow:0 8px 20px #0004
+}
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:#0009;
+z-index:3000;
+align-items:center;
+justify-content:center;
+padding:20px
+}
+.modal.show{display:flex}
+.modalBox{
+background:white;
+border-radius:20px;
+padding:25px;
+width:min(800px,100%);
+max-height:90vh;
+overflow:auto
+}
+
+@media(max-width:900px){
+.grid{grid-template-columns:1fr 1fr}
+nav{
+display:none;
+position:absolute;
+top:75px;left:0;right:0;
+background:white;
+padding:12px;
+flex-direction:column
+}
+nav.open{display:flex}
+.menu{display:block}
+.gallery{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+.grid,.row,.footerGrid{grid-template-columns:1fr}
+.hero{min-height:600px}
+.hero h1{font-size:40px}
+.title h2{font-size:30px}
+.gallery{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container nav">
+
+<a href="#home" class="logoBox">
+<img src="logo.png" alt="ACA Logo">
+<div class="logoText">
+ADITYA COMPUTER ACADEMY
+<small>LEARN • GROW • SUCCEED</small>
+</div>
+</a>
+
+<button class="menu" onclick="toggleMenu()">☰</button>
+
+<nav id="nav">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#courses">Courses</a>
+<a href="#notes">Notes</a>
+<a href="#gallery">Gallery</a>
+<a href="#ai">AI Tools</a>
+<a href="#admission">Admission</a>
+<a href="#student">Student Login</a>
+<a href="#admin">Admin</a>
+<a href="#contact">Contact</a>
+</nav>
+
+</div>
+</header>
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+<div class="container">
+
+<img src="logo.png" alt="Aditya Computer Academy">
+
+<p>ADVANCED COMPUTER EDUCATION</p>
+
+<h1>ADITYA COMPUTER ACADEMY</h1>
+
+<p>
+Learn • Grow • Succeed
+</p>
+
+<p>
+📍 Kandwa Panchkoshi Road, 221106
+</p>
+
+<p>
+📞 9305066046 &nbsp; | &nbsp; 9506793790
+</p>
+
+<div class="buttons">
+<a class="btn blue" href="#courses">Explore Courses</a>
+
+<a class="btn green"
+href="https://wa.me/919305066046?text=Hello%20Aditya%20Computer%20Academy"
+target="_blank">
+WhatsApp
+</a>
+
+<a class="btn white" href="tel:+919305066046">
+📞 Call Now
+</a>
+
+<a class="btn white"
+href="https://www.instagram.com/adityacomputeracademy?stkn=dGVsMTVxcXZ2eTFo"
+target="_blank">
+Instagram
+</a>
+</div>
+
+</div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+<div class="container">
+
+<div class="title">
+<span>ABOUT US</span>
+<h2>Aditya Computer Academy</h2>
+<p>Practical और advanced computer education</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<div class="icon">🎓</div>
+<h3>Quality Education</h3>
+<p class="muted">
+Computer fundamentals से advanced computer applications तक structured learning.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">💻</div>
+<h3>Practical Training</h3>
+<p class="muted">
+Students को theory के साथ computer lab में practical training दी जाती है।
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🤝</div>
+<h3>Student Support</h3>
+<p class="muted">
+Weak students के लिए extra attention और doubt solving support.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- THOUGHT -->
+
+<section style="padding-top:0">
+<div class="container">
+<div class="thought" id="thought">
+“Computer सीखना आज के समय में सिर्फ skill नहीं, अवसरों का रास्ता है।”
+</div>
+</div>
+</section>
+
+<!-- COURSES -->
+
+<section id="courses">
+<div class="container">
+
+<div class="title">
+<span>COURSES</span>
+<h2>हमारे Courses</h2>
+<p>Course के subjects देखें और Enroll करें।</p>
+</div>
+
+<div class="grid" id="courseList"></div>
+
+</div>
+</section>
+
+<!-- NOTES -->
+
+<section id="notes">
+<div class="container">
+
+<div class="title">
+<span>COMPUTER FUNDAMENTALS</span>
+<h2>Computer Parts & Their Uses</h2>
+<p>Computer की basic से advanced जानकारी</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<div class="icon">🧠</div>
+<h3>CPU</h3>
+<p>
+CPU का पूरा नाम Central Processing Unit है।
+यह computer की instructions को process करता है।
+इसके मुख्य parts ALU, CU और Registers हैं।
+</p>
+</div>
+
+<div class="card">
+<div class="icon">⚡</div>
+<h3>RAM</h3>
+<p>
+RAM का पूरा नाम Random Access Memory है।
+यह temporary memory है जिसमें currently running programs और data रखा जाता है।
+</p>
+</div>
+
+<div class="card">
+<div class="icon">💾</div>
+<h3>ROM</h3>
+<p>
+ROM का पूरा नाम Read Only Memory है।
+इसमें जरूरी permanent instructions store रहती हैं।
+</p>
+</div>
+
+<div class="card">
+<div class="icon">💽</div>
+<h3>Hard Disk / SSD</h3>
+<p>
+HDD और SSD permanent data storage के लिए उपयोग होते हैं।
+SSD सामान्यतः HDD से तेज होती है।
+</p>
+</div>
+
+<div class="card">
+<div class="icon">⌨️</div>
+<h3>Keyboard</h3>
+<p>
+Keyboard एक input device है जिसका उपयोग text, numbers और commands enter करने के लिए होता है।
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🖱️</div>
+<h3>Mouse</h3>
+<p>
+Mouse एक pointing input device है।
+इससे click, select, drag और navigation किया जाता है।
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🖥️</div>
+<h3>Monitor</h3>
+<p>
+Monitor एक output device है जो computer की information को screen पर दिखाता है।
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🖨️</div>
+<h3>Printer</h3>
+<p>
+Printer digital document को paper पर print करने के लिए उपयोग किया जाता है।
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🌐</div>
+<h3>Internet</h3>
+<p>
+Internet दुनिया भर के computers और networks को connect करने वाला global network है।
+</p>
+</div>
+
+<div class="card">
+<div class="icon">👨‍🔬</div>
+<h3>Charles Babbage</h3>
+<p>
+Charles Babbage ने Difference Engine और Analytical Engine की concepts पर काम किया।
+उन्हें computer history में महत्वपूर्ण योगदान के लिए जाना जाता है।
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🕐</div>
+<h3>Computer Generations</h3>
+<p>
+1st Generation – Vacuum Tubes<br>
+2nd Generation – Transistors<br>
+3rd Generation – IC<br>
+4th Generation – Microprocessor<br>
+5th Generation – AI & Advanced Computing
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🔐</div>
+<h3>Cyber Safety</h3>
+<p>
+Strong password, 2FA, software updates, backups और suspicious links से सावधानी digital safety के लिए जरूरी है।
+</p>
+</div>
+
+</div>
+
+<br>
+
+<div class="card">
+<h3>📚 Course PDF Notes</h3>
+<p class="muted">
+Admin section से course PDF upload करने के बाद students यहाँ से उसे खोल सकेंगे।
+</p>
+<div id="pdfList"></div>
+</div>
+
+</div>
+</section>
+
+<!-- GALLERY -->
+
+<section id="gallery">
+<div class="container">
+
+<div class="title">
+<span>GALLERY</span>
+<h2>Computer Lab & Academy</h2>
+<p>Photos automatically slide होंगी।</p>
+</div>
+
+<div class="slider">
+<div class="slideTrack">
+
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538?auto=format&fit=crop&w=800&q=80">
+
+</div>
+</div>
+
+<div class="gallery" id="customGallery"></div>
+
+</div>
+</section>
+
+<!-- AI -->
+
+<section id="ai">
+<div class="container">
+
+<div class="title">
+<span>AI STUDENT ZONE</span>
+<h2>AI & Useful Tools</h2>
+<p>Students के लिए useful online tools</p>
+</div>
+
+<div class="grid">
+
+<div class="card ai">
+<h3>🤖 ChatGPT</h3>
+<p>Learning, writing, explanation और brainstorming.</p>
+<a href="https://chatgpt.com/" target="_blank">Open Tool →</a>
+</div>
+
+<div class="card ai">
+<h3>🎨 Canva AI</h3>
+<p>Poster, presentation और creative design.</p>
+<a href="https://www.canva.com/" target="_blank">Open Tool →</a>
+</div>
+
+<div class="card ai">
+<h3>📄 Resume Builder</h3>
+<p>Professional resume बनाने के लिए.</p>
+<a href="https://www.canva.com/create/resumes/" target="_blank">Open Tool →</a>
+</div>
+
+<div class="card ai">
+<h3>🧠 Mindluster</h3>
+<p>Online courses और skill learning.</p>
+<a href="https://www.mindluster.com/" target="_blank">Open Tool →</a>
+</div>
+
+<div class="card ai">
+<h3>💻 FreeCodeCamp</h3>
+<p>Programming और web development practice.</p>
+<a href="https://www.freecodecamp.org/" target="_blank">Open Tool →</a>
+</div>
+
+<div class="card ai">
+<h3>🖼️ AI Image Generator</h3>
+<p>Creative AI image generation tools.</p>
+<a href="https://www.canva.com/ai-image-generator/" target="_blank">Open Tool →</a>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- REVIEWS -->
+
+<section>
+<div class="container">
+
+<div class="title">
+<span>STUDENT REVIEWS</span>
+<h2>Students क्या कहते हैं</h2>
+</div>
+
+<div class="grid">
+
+<div class="card review">
+<div class="stars">★★★★★</div>
+<p>
+“Computer fundamentals बहुत अच्छे तरीके से समझाए गए।”
+</p>
+<b>— Rahul</b>
+</div>
+
+<div class="card review">
+<div class="stars">★★★★★</div>
+<p>
+“MS Office और typing की practical practice अच्छी लगी।”
+</p>
+<b>— Priya</b>
+</div>
+
+<div class="card review">
+<div class="stars">★★★★★</div>
+<p>
+“Academy का learning environment अच्छा है।”
+</p>
+<b>— Aman</b>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ADMISSION -->
+
+<section id="admission">
+<div class="container">
+
+<div class="title">
+<span>ONLINE ADMISSION</span>
+<h2>Student Admission Form</h2>
+</div>
+
+<div class="card watermark">
+
+<form id="admissionForm" class="form">
+
+<div class="row">
+<div>
+<label>Student Name *</label>
+<input id="studentName" required>
+</div>
+
+<div>
+<label>Father Name *</label>
+<input id="fatherName" required>
+</div>
+</div>
+
+<div class="row">
+<div>
+<label>Address *</label>
+<textarea id="studentAddress" required></textarea>
+</div>
+
+<div>
+<label>Contact *</label>
+<input id="studentContact" required>
+</div>
+</div>
+
+<div class="row">
+<div>
+<label>Aadhaar Card No.</label>
+<input id="aadhaar" maxlength="12">
+</div>
+
+<div>
+<label>Qualification *</label>
+<input id="qualification" required>
+</div>
+</div>
+
+<div class="row">
+<div>
+<label>Course *</label>
+<select id="admissionCourse" required></select>
+</div>
+
+<div>
+<label>Passport Size Photo</label>
+<input id="studentPhoto" type="file" accept="image/*">
+</div>
+</div>
+
+<label>
+<input type="checkbox" id="declaration" required>
+मैं घोषणा करता/करती हूँ कि मेरे द्वारा दी गई जानकारी सही है।
+</label>
+
+<button class="btn blue" type="submit">
+Submit Admission Form
+</button>
+
+</form>
+
+<div id="admissionMessage"></div>
+
+</div>
+</div>
+</section>
+
+<!-- STUDENT LOGIN -->
+
+<section id="student">
+<div class="container">
+
+<div class="title">
+<span>STUDENT LOGIN</span>
+<h2>Student Dashboard</h2>
+<p>Contact number और Admission ID से login करें।</p>
+</div>
+
+<div class="card">
+
+<form id="studentLoginForm" class="form">
+
+<div class="row">
+<div>
+<label>Contact Number</label>
+<input id="loginContact" required>
+</div>
+
+<div>
+<label>Admission ID</label>
+<input id="loginAdmissionId" required>
+</div>
+</div>
+
+<button class="btn blue">Login</button>
+
+</form>
+
+<div id="studentDashboard"></div>
+
+</div>
+</div>
+</section>
+
+<!-- ADMIN -->
+
+<section id="admin">
+<div class="container">
+
+<div class="title">
+<span>ADMIN CONTROL</span>
+<h2>Admin Login</h2>
+<p>Admin के लिए complete control panel.</p>
+</div>
+
+<div class="card">
+
+<form id="adminLoginForm" class="form">
+
+<label>Admin Password</label>
+<input type="password" id="adminPassword">
+
+<button class="btn dark">Admin Login</button>
+
+</form>
+
+<div id="adminPanel" class="admin">
+
+<br>
+
+<div class="buttons" style="justify-content:flex-start">
+
+<button class="btn blue" onclick="showAdmin('students')">
+Student List
+</button>
+
+<button class="btn blue" onclick="showAdmin('photos')">
+Upload Photos
+</button>
+
+<button class="btn blue" onclick="showAdmin('pdf')">
+Course PDF
+</button>
+
+<button class="btn orange" onclick="showAdmin('marks')">
+Marksheet
+</button>
+
+<button class="btn green" onclick="showAdmin('certificate')">
+Certificate
+</button>
+
+</div>
+
+<!-- STUDENT LIST -->
+
+<div id="adminStudents">
+
+<h3>Student List</h3>
+
+<div class="tableBox">
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Father</th>
+<th>Contact</th>
+<th>Course</th>
+<th>Date</th>
+</tr>
+</thead>
+
+<tbody id="studentTable"></tbody>
+
+</table>
+</div>
+
+</div>
+
+<!-- PHOTOS -->
+
+<div id="adminPhotos" style="display:none">
+
+<h3>Institute Photos Upload</h3>
+
+<input type="file"
+id="galleryUpload"
+accept="image/*"
+multiple>
+
+<div class="gallery" id="adminGallery"></div>
+
+</div>
+
+<!-- PDF -->
+
+<div id="adminPDF" style="display:none">
+
+<h3>Course PDF Upload</h3>
+
+<div class="row">
+
+<div>
+<label>Course</label>
+<select id="pdfCourse"></select>
+</div>
+
+<div>
+<label>PDF File</label>
+<input type="file" id="coursePDF" accept="application/pdf">
+</div>
+
+</div>
+
+<br>
+
+<button class="btn blue" onclick="savePDF()">
+Save PDF
+</button>
+
+</div>
+
+<!-- MARKSHEET -->
+
+<div id="adminMarks" style="display:none">
+
+<h3>Marksheet Creation</h3>
+
+<div class="form">
+
+<select id="marksStudent"></select>
+
+<input id="marksCourse"
+placeholder="Course">
+
+<textarea id="marksData"
+placeholder="Subject : Marks&#10;Computer : 80&#10;MS Word : 85&#10;Excel : 90">
+</textarea>
+
+<button class="btn orange"
+onclick="createMarksheet()">
+Create Marksheet
+</button>
+
+</div>
+
+<div id="marksResult"></div>
+
+</div>
+
+<!-- CERTIFICATE -->
+
+<div id="adminCertificate" style="display:none">
+
+<h3>Certificate Creation</h3>
+
+<div class="form">
+
+<select id="certificateStudent"></select>
+
+<select id="certificateCourse"></select>
+
+<input type="date" id="certificateDate">
+
+<button class="btn green"
+onclick="createCertificate()">
+Create Certificate
+</button>
+
+</div>
+
+<div id="certificateResult"></div>
+
+<hr>
+
+<h3>Certificate Verification</h3>
+
+<input id="verifyCode"
+placeholder="Certificate Verification Code">
+
+<br><br>
+
+<button class="btn blue"
+onclick="verifyCertificate()">
+Verify Certificate
+</button>
+
+<div id="verifyResult"></div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+<div class="container">
+
+<div class="title">
+<span>CONTACT US</span>
+<h2>Aditya Computer Academy</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>📍 Address</h3>
+<p>Kandwa Panchkoshi Road, 221106</p>
+</div>
+
+<div class="card">
+<h3>📞 Mobile</h3>
+<p>
+<a href="tel:+919305066046">9305066046</a><br>
+<a href="tel:+919506793790">9506793790</a>
+</p>
+</div>
+
+<div class="card">
+<h3>📧 Email</h3>
+<p>
+<a href="mailto:adityacomputeracdemy@gmail.com">
+adityacomputeracdemy@gmail.com
+</a>
+</p>
+</div>
+
+<div class="card">
+<h3>📱 Social Media</h3>
+
+<a class="btn green"
+href="https://
